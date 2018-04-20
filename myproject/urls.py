@@ -9,7 +9,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.inicio_pag),
-    url(r'^logout', logout),
-    url(r'^login', login),
+    url(r'^$', views.inicio_pag, name="Listado de las paginas"),
+    url(r'^logout', logout,  {'next_page': '/'}),
+    url(r'^login', login, {'template_name': 'registration/login.html'}),
+    url(r'(.+)', views.pag),
 )
